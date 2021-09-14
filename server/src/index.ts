@@ -1,6 +1,8 @@
 import cookieSession from 'cookie-session';
 import express from 'express';
-import { router } from './routes/loginRoutes';
+import { AppRouter } from './AppRouter';
+import './controllers/LoginController';
+import './controllers/RootController';
 
 const app = express();
 
@@ -11,7 +13,7 @@ app.use(
   })
 );
 app.use(cookieSession({ keys: ['salfksdf'] }));
-app.use(router);
+app.use(AppRouter.getInstance());
 
 app.listen(3001, () => {
   console.log('Listening on port 3001');
